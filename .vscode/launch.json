@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {   "outputCapture": "std",
+            "type": "pwa-chrome",
+            "name": "http:///Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --remote-debugging-port=9222",
+            "request": "launch",
+            "url": "http:///Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --remote-debugging-port=9222"
+        }
+    ]
+}
