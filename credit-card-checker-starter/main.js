@@ -86,22 +86,7 @@ const idInvalidCardCompanies = (array) => {
     if (firstDigit.includes(6)) {
         companies.push('Discover');
     };
-    if (firstDigit.includes(1)) {
-        companies.push('Company not found');
-    };
-    if (firstDigit.includes(2)) {
-        companies.push('Company not found');
-    };
-    if (firstDigit.includes(7)) {
-        companies.push('Company not found');
-    };
-    if (firstDigit.includes(8)) {
-        companies.push('Company not found');
-    };
-    if (firstDigit.includes(9)) {
-        companies.push('Company not found');
-    };
-    if (firstDigit.includes(0)) {
+    if(firstDigit.some(element => (element<3 || element>6))) {
         companies.push('Company not found');
     };
 
@@ -168,7 +153,7 @@ const invalidC = [
 ]
 const firstDigit = [
     4, 5, 3, 6,
-    5, 3, 9, 4
+    5, 0, 9, 4
   ];
 const companies = [];
 
@@ -185,6 +170,11 @@ if (firstDigit.includes(5)) {
 if (firstDigit.includes(6)) {
     companies.push('Discover');
 };
+
+if(firstDigit.some(element => (element<3 || element>6))) {
+    companies.push('Company not found');
+}
+/*
 if (firstDigit.includes(1)) {
     companies.push('Company not found');
 };
@@ -202,7 +192,7 @@ if (firstDigit.includes(9)) {
 };
 if (firstDigit.includes(0)) {
     companies.push('Company not found');
-};
+};*/
 console.log(companies);
 
 
