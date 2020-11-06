@@ -28,10 +28,10 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 // Add your functions below:
 const validateCred = (array) => {
     let validation = new Array(array.length);
-    validation[(validation.length)-1] = array[(validation.length)-1];
-    for (let i = array.length-1; i >= 0; i--) {
-        if ((array.length-1-i)%2 != 0) {
-            if (array[i]*2 > 9) {
+    validation[(validation.length) - 1] = array[(validation.length) - 1];
+    for (let i = array.length - 1; i >= 0; i--) {
+        if ((array.length - 1 - i) % 2 != 0) {
+            if (array[i] * 2 > 9) {
                 validation[i] = (array[i] * 2 - 9);
             } else {
                 validation[i] = (array[i] * 2);
@@ -39,7 +39,7 @@ const validateCred = (array) => {
         } else {
             validation[i] = (array[i]);
         };
-        
+
     };
     //validation.push(array[(array.length - 1)]);
     let sum = 0;
@@ -52,7 +52,7 @@ const validateCred = (array) => {
     } else {
         return false;
     };
-    
+
 
 }
 
@@ -63,6 +63,47 @@ const findInvalidCards = (array) => {
         }
     });
     return invalidCards;
+
+}
+
+const idInvalidCardCompanies = (array) => {
+    const firstDigit = [];
+    const companies = [];
+    for (const invalid of array) {
+        firstDigit.push(invalid[0]);
+    };
+    
+    //console.log(firstDigit);
+    if (firstDigit.includes(3)) {
+        companies.push('Amex(American Express');
+    };
+    if (firstDigit.includes(4)) {
+        companies.push('Visa');
+    };
+    if (firstDigit.includes(5)) {
+        companies.push('Master');
+    };
+    if (firstDigit.includes(6)) {
+        companies.push('Discover');
+    };
+    if (firstDigit.includes(1)) {
+        companies.push('Company not found');
+    };
+    if (firstDigit.includes(2)) {
+        companies.push('Company not found');
+    };
+    if (firstDigit.includes(7)) {
+        companies.push('Company not found');
+    };
+    if (firstDigit.includes(8)) {
+        companies.push('Company not found');
+    };
+    if (firstDigit.includes(9)) {
+        companies.push('Company not found');
+    };
+    if (firstDigit.includes(0)) {
+        companies.push('Company not found');
+    };
 
 }
 
@@ -82,8 +123,87 @@ console.log(invalid4);
 console.log(validateCred(invalid4));
 console.log(invalid5);
 console.log(validateCred(invalid5));*/
-console.log(findInvalidCards(batch));
+//console.log(findInvalidCards(batch));
+const invalidC = [
+    [
+        4, 5, 3, 2, 7, 7,
+        8, 7, 7, 1, 0, 9,
+        1, 7, 9, 5
+    ],
+    [
+        5, 7, 9, 5, 5, 9,
+        3, 3, 9, 2, 1, 3,
+        4, 6, 4, 3
+    ],
+    [
+        3, 7, 5, 7, 9, 6,
+        0, 8, 4, 4, 5, 9,
+        9, 1, 4
+    ],
+    [
+        6, 0, 1, 1, 1, 2,
+        7, 9, 6, 1, 7, 7,
+        7, 9, 3, 5
+    ],
+    [
+        5, 3, 8, 2, 0, 1,
+        9, 7, 7, 2, 8, 8,
+        3, 8, 5, 4
+    ],
+    [
+        3, 4, 4, 8, 0, 1,
+        9, 6, 8, 3, 0, 5,
+        4, 1, 4
+    ],
+    [
+        6, 0, 1, 1, 3, 7, 7,
+        0, 2, 0, 9, 6, 2, 6,
+        5, 6, 2, 0, 3
+    ],
+    [
+        4, 9, 2, 9, 8, 7,
+        7, 1, 6, 9, 2, 1,
+        7, 0, 9, 3
+    ]
+]
+const firstDigit = [
+    4, 5, 3, 6,
+    5, 3, 9, 4
+  ];
+const companies = [];
 
+console.log(firstDigit);
+if (firstDigit.includes(3)) {
+    companies.push('Amex(American Express');
+} else { companies.push('Not found')};
+if (firstDigit.includes(4)) {
+    companies.push('Visa');
+};
+if (firstDigit.includes(5)) {
+    companies.push('Master');
+};
+if (firstDigit.includes(6)) {
+    companies.push('Discover');
+};
+if (firstDigit.includes(1)) {
+    companies.push('Company not found');
+};
+if (firstDigit.includes(2)) {
+    companies.push('Company not found');
+};
+if (firstDigit.includes(7)) {
+    companies.push('Company not found');
+};
+if (firstDigit.includes(8)) {
+    companies.push('Company not found');
+};
+if (firstDigit.includes(9)) {
+    companies.push('Company not found');
+};
+if (firstDigit.includes(0)) {
+    companies.push('Company not found');
+};
+console.log(companies);
 
 
 
