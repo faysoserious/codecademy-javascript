@@ -72,7 +72,7 @@ const idInvalidCardCompanies = (array) => {
     for (const invalid of array) {
         firstDigit.push(invalid[0]);
     };
-    
+
     //console.log(firstDigit);
     if (firstDigit.includes(3)) {
         companies.push('Amex(American Express)');
@@ -86,13 +86,46 @@ const idInvalidCardCompanies = (array) => {
     if (firstDigit.includes(6)) {
         companies.push('Discover');
     };
-    if(firstDigit.some(element => (element<3 || element>6))) {
+    if (firstDigit.some(element => (element < 3 || element > 6))) {
         companies.push('Company not found');
     };
     return companies;
 }
 
-console.log(idInvalidCardCompanies(findInvalidCards(batch)));
+const stringToArray = string => {
+    let strDigits = (string.split(''));
+    let digits = []
+    for (const item of strDigits) {
+        digits.push(parseInt(item));
+    }
+    return digits;
+}
+
+const arrayStringToArray = array => {
+    const batchArray = [];
+    for (const item of array) {
+        let strDigits = (item.split(''));
+        //console.log(strDigits);
+        let digits = []
+        for (let i=0; i < strDigits.length;i++) {
+            digits.push(parseInt(strDigits[i]));
+        };
+        batchArray.push(digits);
+
+    }
+    
+    return batchArray;
+}
+
+
+/*const card1 = '453275589806122940240071236396594556952175321652385';
+const card2 = '379549893549583374555225281782378002789001294';
+const card3 = '353857547778635035428179257484403534765549814957128';
+const card4 = '540950381257754127209933480489445256445444060765';
+const batch2 = [card1, card2, card3, card4];
+console.log(idInvalidCardCompanies(findInvalidCards(arrayStringToArray(batch2))));
+//console.log(validateCred(stringToArray(card1)));
+*/
 
 
 
