@@ -25,7 +25,7 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3]
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5]
 
 
-// Add your functions below:
+// Validate the given cards. return true or false:
 const validateCred = (array) => {
     let validation = new Array(array.length);
     validation[(validation.length) - 1] = array[(validation.length) - 1];
@@ -55,7 +55,7 @@ const validateCred = (array) => {
 
 
 }
-
+//Find the invalid cards numbers among a array of cars
 const findInvalidCards = (array) => {
     const invalidCards = array.filter(card => {
         if (!validateCred(card)) {
@@ -65,7 +65,7 @@ const findInvalidCards = (array) => {
     return invalidCards;
 
 }
-
+// map the invalid cards to the companies who issued the invalid cards
 const idInvalidCardCompanies = (array) => {
     const firstDigit = [];
     const companies = [];
@@ -91,7 +91,7 @@ const idInvalidCardCompanies = (array) => {
     };
     return companies;
 }
-
+// if the card numbers are in string, convert it into array
 const stringToArray = string => {
     let strDigits = (string.split(''));
     let digits = []
@@ -100,7 +100,7 @@ const stringToArray = string => {
     }
     return digits;
 }
-
+// convert a list of string card numbers into arrays
 const arrayStringToArray = array => {
     const batchArray = [];
     for (const item of array) {
@@ -118,7 +118,8 @@ const arrayStringToArray = array => {
 }
 
 
-/*const card1 = '453275589806122940240071236396594556952175321652385';
+/* some card number examples for testing:
+const card1 = '453275589806122940240071236396594556952175321652385';
 const card2 = '379549893549583374555225281782378002789001294';
 const card3 = '353857547778635035428179257484403534765549814957128';
 const card4 = '540950381257754127209933480489445256445444060765';
