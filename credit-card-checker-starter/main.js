@@ -46,7 +46,7 @@ const validateCred = (array) => {
     for (const digit of validation) {
         sum = sum + digit;
     };
-    console.log(sum);
+    //console.log(sum);
     if (sum % 10 === 0) {
         return true;
     } else {
@@ -56,7 +56,17 @@ const validateCred = (array) => {
 
 }
 
-console.log('VALID:')
+const findInvalidCards = (array) => {
+    const invalidCards = array.filter(card => {
+        if (!validateCred(card)) {
+            return card;
+        }
+    });
+    return invalidCards;
+
+}
+
+/*console.log('VALID:')
 console.log(valid4);
 console.log(validateCred(valid4));
 console.log(valid5);
@@ -71,7 +81,8 @@ console.log(validateCred(invalid3));
 console.log(invalid4);
 console.log(validateCred(invalid4));
 console.log(invalid5);
-console.log(validateCred(invalid5));
+console.log(validateCred(invalid5));*/
+console.log(findInvalidCards(batch));
 
 
 
