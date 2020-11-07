@@ -17,7 +17,7 @@ const mockUpStrand = () => {
 const pAequorFactory = (number, dnaBase) => {
   return {
     specimenNum: number,
-    dna : dnaBase,
+    dna: dnaBase,
     /**
      * .mutate() is responsible for randomly selecting a base in the object’s dna property 
      * and changing the current base to a different base. Then .mutate() will return 
@@ -32,7 +32,7 @@ const pAequorFactory = (number, dnaBase) => {
         let item = returnRandBase();
         do {
           item = returnRandBase();
-        } while(item === currentBase[i]);
+        } while (item === currentBase[i]);
         mutantStand.push(item);
       };
       return mutantStand;
@@ -56,36 +56,51 @@ const pAequorFactory = (number, dnaBase) => {
       similarity = identicalNum / 15 * 100;
       return `specimen ${obj.specimenNum} and specimen ${this.specimenNum} have ${similarity.toFixed(2)}% DNA in common.`
     },
-/**
- * returns true if the object’s .dna array contains at least 60% 'C' or 'G' bases. 
- * Otherwise, .willLikelySurvive() returns false.
- */
+    /**
+     * returns true if the object’s .dna array contains at least 60% 'C' or 'G' bases. 
+     * Otherwise, .willLikelySurvive() returns false.
+     */
     willLikelySurvive() {
       const check = this.dna;
       let CGs = 0;
       check.forEach(element => {
-        if (element === 'C' || element ==='G') {
+        if (element === 'C' || element === 'G') {
           CGs++;
         };
       });
       const surviveRate = CGs / 15;
-      if(surviveRate >= 0.6) {
+      //console.log(surviveRate);
+      if (surviveRate >= 0.6) {
         return true;
       } else {
         return false;
       };
-      
+
     }
 
 
   };
 };
-const test = pAequorFactory(1,mockUpStrand());
-//const test2 = pAequorFactory(2,mockUpStrand());
-console.log(test.willLikelySurvive());
-console.log(test.dna);
-//console.log(test.compareDNA(test2));
 
+const create = n => {
+  let i = 0;
+  let instance = 1;
+  const instancesArray = [];
+  do {
+    i++;
+    let instanceObj = pAequorFactory(instance, mockUpStrand());
+    if (instanceObj.willLikelySurvive()) {
+      instancesArray.push(instanceObj);
+      instance++;
+    }
+
+  } while (instance < (n+1));
+  return instancesArray;
+
+};
+const test = create(30);
+console.log(test);
+console.log(test.length);
 
 
 
