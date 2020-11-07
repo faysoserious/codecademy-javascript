@@ -36,12 +36,33 @@ const pAequorFactory = (number, dnaBase) => {
         mutantStand.push(item);
       };
       return mutantStand;
+    },
+    /** 
+     * The behavior of .compareDNA() is to compare the current pAequor‘s .dna 
+     * with the passed in pAequor‘s .dna and compute how many bases are identical
+     *  and in the same locations. 
+     */
+    compareDNA(obj) {
+      let similarity = 0;
+      let identicalNum = 0;
+      const DNA1 = obj.dna;
+      const DNA2 = this.dna;
+      for (let i = 0; i < 15; i++) {
+        if (DNA1[i] === DNA2[i]) {
+          identicalNum++;
+        };
+      };
+      console.log(identicalNum);
+      similarity = identicalNum / 15 * 100;
+      return `specimen ${obj.specimenNum} and specimen ${this.specimenNum} have ${similarity.toFixed(2)}% DNA in common.`
     }
   };
 };
 const test = pAequorFactory(1,mockUpStrand());
+const test2 = pAequorFactory(2,mockUpStrand());
 console.log(test.dna);
-console.log(test.mutate());
+console.log(test2.dna);
+console.log(test.compareDNA(test2));
 
 
 
