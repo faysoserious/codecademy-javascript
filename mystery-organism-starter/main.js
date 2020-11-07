@@ -13,6 +13,14 @@ const mockUpStrand = () => {
   return newStrand;
 };
 
+//Factory function pAequorFactory() to create multiple objects
+const pAequorFactory = (number, dnaBase) => {
+  return {
+    specimenNum: number,
+    dna : dnaBase,
+  };
+};
+console.log(pAequorFactory(1, mockUpStrand()));
 
 
 
