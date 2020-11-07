@@ -37,6 +37,35 @@ const pAequorFactory = (number, dnaBase) => {
       };
       return mutantStand;
     },
+/**
+ * The rules are that 'A' bases bind with 'T' bases (and vice versa) 
+ * and 'C' bases bind with 'G' bases (and vice versa).
+ */
+    complementStrand() {
+      const currentBase = this.dna;
+      const comStand = [];
+      for (let i = 0; i < 15; i++) {
+        switch (currentBase[i]) {
+          case 'A':
+            comStand.push('T');
+            break;
+          case 'T':
+            comStand.push('A');
+            break;
+          case 'C':
+            comStand.push('G');
+            break;
+          case 'G':
+            comStand.push('C');
+            break;
+          default:
+            console.log('wrong DNA base!');
+            break;
+
+        };
+      };
+      return comStand;
+    },
     /** 
      * The behavior of .compareDNA() is to compare the current pAequor‘s .dna 
      * with the passed in pAequor‘s .dna and compute how many bases are identical
@@ -94,13 +123,13 @@ const create = n => {
       instance++;
     }
 
-  } while (instance < (n+1));
+  } while (instance < (n + 1));
   return instancesArray;
 
 };
-const test = create(30);
-console.log(test);
-console.log(test.length);
+//const test = create(2);
+//console.log(test[1].dna);
+//console.log(test[1].complementStrand());
 
 
 
