@@ -54,6 +54,8 @@ parent.innerHTML = 'I am the parent and my inner HTML has been replaced!';
 
 the DOM allows us to access a node’s attributes, such as its `class`, `id`, and `inline style`.
 
+### DOM
+
 #### The `document` keyword
 
 The `document` gives the access to the root node of the DOM tree.
@@ -233,3 +235,42 @@ itemFour.addEventListener('mousedown', showItem);
 document.addEventListener('keydown', up);
 document.addEventListener('keyup', down);
 ```
+
+### Form Validation - Client-side
+
+Advantages: 
+
+1. Users can be warned to problematic data immediately rather than longer wait time from feedback from server and completely refill the form.
+2. The application time and resources are saved if the validation happens at a early stage.
+
+Disadvantage:
+NOT all issues can be handled with the built-in HTML validations.
+
+#### 1. Client-side Validation: HTML
+
+`Client` : web browser
+
+```html
+<form action="" method="POST">
+      <label for="text">Enter your name here:</label>
+    	<input id="name" name="name" type="text" required minlength="3" maxlength="100">
+      <br><br>
+      <label for="number">Enter your age here:</label>
+      <input type="number" name="age" id="age" required min="1" max="123">
+      <br><br>
+        <label for="code">Best place to learn to code: (hint: starts with a "C")</label>
+  <input id="code" name="code" type="text" required pattern="[cC]odecademy">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+```
+
+#### 2. Client-side Validation: javascript
+
+By either writing the JavaScript ourselves or by incorporating a JavaScript library.
+
+### Form Validation - Backend-side
+
+1. Stronger computing power
+2. security
+3. check mutiplicate data in database
