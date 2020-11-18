@@ -619,3 +619,34 @@ Make good use of `console.log()` !
 1. Go to the beginning of the malfunctioning code. Print out all starting variables, existing values, and arguments using `console.log()`. If the values are what you expect, move on to the next piece of logic in the code. If not, you have identified a bug and should skip to step 3.
 1. After the next piece of logic in your code, add `console.log()` statements to ensure updated variables have the values that you now expect and that the block of code is being executed. If that logic is executing properly, continue repeating this step until you find a line not working as expected, then move to step 3.
 1. Fix the identified bug and run your code again. If it now works as expected, you’ve finished debugging! If not, continue stepping through your code using step 2 until it does.
+
+## Class
+
+### Constructor
+
+creates a new instance of a class.
+
+```javascript
+class Surgeon {
+  constructor(name, department) {
+    this.name = name;
+    this.department = department;
+  }
+}
+```
+
+### Instance
+
+An object that contains the property names and methods of a class, but with unique property values.
+
+```javascript
+class Surgeon {
+  constructor(name, department) {
+    this.name = name;
+    this.department = department;
+  }
+}
+const surgeonCurry = new Surgeon('Curry', 'Cardiovascular');
+const surgeonDurant = new Surgeon('Durant', 'Orthopedics');
+console.log(surgeonDurant.department);
+```
