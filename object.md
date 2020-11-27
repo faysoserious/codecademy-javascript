@@ -681,3 +681,145 @@ const surgeonCurry = new Surgeon('Curry', 'Cardiovascular');
 const surgeonDurant = new Surgeon('Durant', 'Orthopedics');
 ```
 
+### Methods Calls
+
+Same as in object. Append the instance with a period, then the property or method name. 
+For methods, you must also include opening and closing parentheses.
+
+```javascript
+console.log(surgeonCurry.name);
+surgeonCurry.takeVacationDays(3);
+console.log(surgeonCurry.remainingVacationDays);
+```
+
+### Static Methods
+
+In the `HospitalEmployee` class, create a method `generatePassword` with `Static` keyword.
+
+```javascript
+class HospitalEmployee {
+  constructor(name) {
+    this._name = name;
+    this._remainingVacationDays = 20;
+  }
+  
+  get name() {
+    return this._name;
+  }
+  
+  get remainingVacationDays() {
+    return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    this._remainingVacationDays -= daysOff;
+  }
+
+  static generatePassword() {
+    return Math.floor(Math.random()*10000);
+  }
+}
+```
+
+This `generatePassword` method can only be accessed by appending to the Class name.
+
+```javascript
+console.log(HospitalEmployee.generatePassword());
+//return random number as password;
+```
+
+Cannot access the `.generatePassword()` method from instances of the `HospitalEmployee` class or instances of its subclasses
+
+```javascript
+const nurseOlynyk = new HospitalEmployee('Olynyk');
+console.log(nurseOlynyk.generatePassword()); 
+// return TYPEERROR
+```
+
+
+### Inheritance
+
+With inheritance, you can create a parent class (aka a superclass) with properties and methods that multiple child classes (aka subclasses) share. The child classes inherit the properties and methods from their parent class.
+
+#### Create Parent Class
+
+```javascript
+class HospitalEmployee {
+  constructor(name) {
+    this._name = name;
+    this._remainingVacationDays = 20;
+  }
+  
+  get name() {
+    return this._name;
+  }
+  
+  get remainingVacationDays() {
+    return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    this._remainingVacationDays -= daysOff;
+  }
+}
+```
+
+#### Create Child Class
+
+If the Child Class shares any property or method with the Parent Class, the Parent Class can `extend` them to the subclass.
+
+The `super` keyword calls the `constructor` of the parent class. In this case, `super(name)` passes the name argument of the `Nurse` class to the constructor of the `HospitalEmployee` class. When the `HospitalEmployee` constructor runs, it sets `this._name = name`; for new `Nurse` instances.
+
+```javascript
+class Nurse extends HospitalEmployee {
+  // call constructor to create a new Nurse object
+  constructor(name, certifications){
+    super(name);
+    this._remainingVacationDays = 20;
+    this._certifications = certifications;
+  }
+}
+```
+
+`_certifications` is a new property that is unique to the `Nurse` class, so we set it in the `Nurse` constructor.
+
+***!!! In a `constructor()`, you must always call the `super` method before you can use the `this` keyword***
+
+#### Call the Child Class
+
+```javascript
+const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+```
+
+The keyword `extend` allows the child class the access to **all** the mathods and property in the parent class.
+
+```javascript
+nurseOlynyk.takeVacationDays(5);
+console.log(nurseOlynyk.remainingVacationDays);
+```
+
+#### Child Class own properties, getters, setters, and methods
+
+Create new getter and method `addCertification`
+
+```javascript
+class Nurse extends HospitalEmployee {
+  constructor(name, certifications) {
+    super(name);
+    this._certifications = certifications;
+  } 
+
+  get certifications() {
+    return this._certifications;
+  }
+
+  addCertification(newCertification) {
+    this.certifications.push(newCertification);
+  }
+}
+
+const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+nurseOlynyk.addCertification('Genetics');
+console.log(nurseOlynyk.certifications);
+```
+
