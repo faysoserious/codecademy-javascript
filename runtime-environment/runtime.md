@@ -110,3 +110,62 @@ const { valueA, valueB } = resources;
 // This will not work...
 import { valueA, valueB } from 'module.js'
 ```
+
+## Handling Errors
+
+In JavaScript, there are built-in error objects that have a `name` and `message` property which tell us what went wrong. Examples of built-in runtime errors include:
+
+- `ReferenceError`: when a variable or function cannot be found.
+- `TypeError`: when a value is not a valid type, see the example below:
+
+    ```javascript
+        const reminder = 'Reduce, Reuse, Recycle';
+        reminder = 'Save the world';
+        // TypeError: Assignment to constant variable.
+        console.log('This will never be printed!');
+    ```
+
+    In the example above, when we try to reassign a constant variable reminder, the `TypeError` is thrown. Code that is written after a thrown runtime error will not be evaluated, so the `console.log()` statement will not be evaluated.
+
+### Constructing an Error
+
+Use the Error function to inform user with a message. The program does NOT stop running.
+
+- Method 1:
+
+
+    ```javascript
+    console.log(Error('Your password is too weak.'));
+    // Prints: Error: Your password is too weak.
+    ```
+- Method 2:
+
+    ```javascript
+    console.log(new Error('Your password is too weak.'));
+    // Prints: Error: Your password is too weak.
+    ```
+
+### keyword `throw`
+
+The error is thrown and code after throw statement will not execute. Take for example:
+
+```javascript
+throw Error('Something wrong happened');
+// Error: Something wrong happened
+ 
+console.log('This will never run');
+```
+
+### Handling with `try`...`catch`
+
+1. Use a `try`...`catch` statement to handle built-in errors that are thrown by the JavaScript engine that is reading and evaluating our code.
+
+```javascript
+const someVar = 'Cannot be reassigned';
+try {
+  someVar = 'Still going to try';
+} catch(e) {
+  console.log(e);
+}
+// Prints: TypeError: Assignment to constant variable.
+```
